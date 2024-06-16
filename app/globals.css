@@ -8,8 +8,6 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+FR+Moderne:wght@100..400&display=swap');
-
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -21,10 +19,9 @@
 body {
   background-color: #0E1630;  
   color: rgb(var(--foreground-rgb));
-
-
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @layer utilities {
   .text-balance {
     text-wrap: balance;

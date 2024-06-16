@@ -1,10 +1,9 @@
-import React from 'react'
 
 const Hero = () => {
     return (
         <div className="flex flex-col items-center justify-center py-20">
             <div className="rounded-full overflow-hidden w-40 h-40 mb-4">
-                {/* <Image src="/images/profile.jpg" alt="Piyush Garg" width={160} height={160} /> */}
+                {/* <Image src="" alt="VivThumar" width={160} height={160} /> */}
             </div>
             <h1 className="text-4xl font-bold mb-4">I'm Vivek Thumar</h1>
             <p className="text-xl text-center max-w-2xl mb-8">

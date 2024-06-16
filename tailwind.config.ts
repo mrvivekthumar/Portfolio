@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 
 const config: Config = {
   content: [
@@ -12,13 +14,20 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      maxWidth: {
+        maxContent: "1260px",
+        maxContentTab: "650px"
       }
     },
     fontFamily: {
-      PlayfairFrance: ['Playfair France', 'serif'],
+      OpenSans: ['"Open Sans"', ...defaultTheme.fontFamily.sans],
     },
     colors: {
-      span: "#01D286"
+      span: "#01D286",
+      navbar: "#0E1630",
+      navbarHover: "#4ADE80"
+
     }
   },
   plugins: [],

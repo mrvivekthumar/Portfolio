@@ -3,10 +3,14 @@
 @tailwind utilities;
 
 body {
+  background : #000
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .before-content-none::before{
+    content : "";
   }
 }

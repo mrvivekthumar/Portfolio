@@ -4,6 +4,7 @@ import "./globals.css";
 
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
+import GrainEffect from "@/components/visualEffects/grain-effect";
 
 // Fonts from google
 const MainFont = Bricolage_Grotesque({ subsets: ["latin"] });
@@ -39,7 +40,10 @@ export default function RootLayout({
             {/* <body className={cn(MainFont.className, OswalFont.variable)}>{children}</body> */}
 
             {/* Using Local font form assets folder */}
-            <body className={cn(MainFont.className, OswalFont.variable, PixelFont.variable)}>{children}</body>
+            <body className={cn(MainFont.className, OswalFont.variable, PixelFont.variable)}>
+                <GrainEffect />
+                {children}
+            </body>
 
         </html>
     );

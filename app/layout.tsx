@@ -5,6 +5,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import GrainEffect from "@/components/visualEffects/grain-effect";
+import { Cursor } from "@/components/cursor/cursor";
 
 // Fonts from google
 const MainFont = Bricolage_Grotesque({ subsets: ["latin"] });
@@ -21,6 +22,7 @@ const PixelFont = localFont({
 });
 
 
+// Metadata
 export const metadata: Metadata = {
     title: "VIVEK THUMAR",
     description: "This is Vivek Thumar official Portfolio",
@@ -42,6 +44,7 @@ export default function RootLayout({
             {/* Using Local font form assets folder */}
             <body className={cn(MainFont.className, OswalFont.variable, PixelFont.variable)}>
                 <GrainEffect />
+                <Cursor color="#fff" />
                 {children}
             </body>
 

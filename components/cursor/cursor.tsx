@@ -5,7 +5,7 @@ interface CursorProps {
     color: string;
 }
 
-export const Cursor: FC<CursorProps> = ({ color }) => {
+const Cursor: FC<CursorProps> = ({ color }) => {
     return (<AnimatedCursor
         innerSize={8}
         outerSize={35}
@@ -24,3 +24,5 @@ export const Cursor: FC<CursorProps> = ({ color }) => {
     />
     );
 };
+
+export default Cursor;

@@ -5,7 +5,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import GrainEffect from "@/components/visualEffects/grain-effect";
-import { Cursor } from "@/components/cursor/cursor";
+import Cursor from "@/components/cursor/cursor";
 
 // Fonts from google
 const MainFont = Bricolage_Grotesque({ subsets: ["latin"] });

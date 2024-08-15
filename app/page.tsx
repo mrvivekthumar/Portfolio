@@ -1,11 +1,15 @@
-import Image from "next/image";
+"use client";
+import WaterWaveWrapper from "@/components/visualEffects/water-wave-wrapper";
 
 export default function Home() {
     return (
-        <div>
-            <h1 className="text-2xl">This is vivek portfolio</h1>
-            <h1 className="text-2xl font-pixel">This is vivek portfolio</h1>
-            <h1 className="font-oswald text-2xl">This is vivek portfolio</h1>
-        </div>
+        <WaterWaveWrapper
+            imageUrl=""
+            dropRadius="1"
+            perturbance="2"
+            resolution="2048"
+        >
+            {() => <div className="h-screen"></div>}
+        </WaterWaveWrapper>
     );
 }

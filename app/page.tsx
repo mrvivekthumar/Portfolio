@@ -3,6 +3,7 @@ import Button from "@/components/ui/button";
 import Card from "@/components/ui/card";
 import FancyButton from "@/components/ui/fancy-button";
 import Input from "@/components/ui/input";
+import LiveClock from "@/components/ui/live-clock";
 import TextArea from "@/components/ui/text-area";
 import WaterWaveWrapper from "@/components/visualEffects/water-wave-wrapper";
 import { FaArrowAltCircleRight, FaArrowRight, FaUser } from "react-icons/fa";
@@ -31,6 +32,7 @@ export default function Home() {
                             <div className="w-[350px]">
                                 <FancyButton text="Contact us" icon={<FaArrowRight />} />
                             </div>
+                            <LiveClock timeZone="Asia/India" />
                         </Card>
                     </div>
                 </div>}

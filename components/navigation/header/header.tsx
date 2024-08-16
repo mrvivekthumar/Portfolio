@@ -9,7 +9,7 @@ export default function () {
         <div className='w-full flex items-center justify-center md:justify-between'>
             <Profile />
             <div className='hidden md:inline'>
-                <MagneticWrapper className=''>
+                <MagneticWrapper>
                     <FancyButton text="Let's talk" icon={<FaArrowRight />} />
                 </MagneticWrapper>
             </div>

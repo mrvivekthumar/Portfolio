@@ -4,7 +4,7 @@ import React from 'react'
 import { featureData } from '@/data'
 import FeaturedCard from '@/components/cards/featured/featured-card';
 
-const MainFeatured = featureData[0];
+const MainFeatured = featureData[1];
 
 export default function FeaturedSection() {
     return (
@@ -13,7 +13,7 @@ export default function FeaturedSection() {
             <Heading number='01' title_1='Featured' title_2='Work' />
             {/* Main featured Card */}
             <FeaturedCard
-                active
+                active={true}
                 title={MainFeatured.title}
                 tag={MainFeatured.tag}
                 video={MainFeatured.video}

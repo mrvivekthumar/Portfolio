@@ -1,3 +1,4 @@
+"use client";
 import moment from "moment-timezone";
 import { FC, useEffect, useState } from "react";
 

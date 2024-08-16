@@ -21,7 +21,7 @@ const featureData = [
         link: "https://dribbble.com/shots/23623908-Frontline-Creative-Studio-Website",
     },
     {
-        title: "Creative Studio",
+        title: "Cherry Blossom is the Best",
         logo: "",
         tag: "Sep 2024",
         video: "https://cdn.dribbble.com/userupload/14512073/file/original-57c2401805d8534023b147633de0891a.mp4",

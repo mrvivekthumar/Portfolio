@@ -9,7 +9,7 @@ import ScrollDown from "@/components/ui/scroll-down";
 import TextArea from "@/components/ui/text-area";
 import MagneticWrapper from "@/components/visualEffects/magnetic-wrapper";
 import WaterWaveWrapper from "@/components/visualEffects/water-wave-wrapper";
-import { FaArrowAltCircleRight, FaArrowRight, FaUser } from "react-icons/fa";
+import { FaArrowRight, FaUser } from "react-icons/fa";
 import { GoHomeFill } from "react-icons/go";
 
 

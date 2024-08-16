@@ -36,7 +36,7 @@ const config: Config = {
                 border: "rgb(255 255 255 / 0.05)",
             },
             backgroundImage: {
-                grain: "url(/assets/images/background/noisy-background.png)",
+                grain: "url(/assets/images/background/noisy_background.jpg)",
             },
             animation: {
                 "noisy-bg": "noise 1s steps(2) infinite",

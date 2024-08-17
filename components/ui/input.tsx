@@ -1,8 +1,8 @@
 import { assert } from "console";
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 
 interface InputPorps {
-    icon?: string;
+    icon?: ReactNode;
     placeholder: string;
     type: "email" | "text" | "password";
 }

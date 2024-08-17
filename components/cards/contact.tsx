@@ -10,7 +10,7 @@ interface ContactCardProps {
 
 const ContactCard: FC<ContactCardProps> = ({ icon, title, text, btnText }) => {
     return (
-        <div className="bg-primary-background border border-border rounded-lg relative overflow-hidden pt-5 pl-[25px] shadow-md">
+        <div className="bg-secondary-background border border-border rounded-lg relative overflow-hidden pt-5 pl-[25px] shadow-md">
             <div className="z-20 flex flex-col gap-8 justify-between items-start">
                 {/* Header */}
                 <div className="flex items-center gap-x-2 ">

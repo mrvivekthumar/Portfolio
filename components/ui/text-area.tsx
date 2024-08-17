@@ -1,7 +1,7 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 
 interface TextAreaPorps {
-    icon?: string;
+    icon?: ReactNode;
     placeholder: string;
 }
 

@@ -1,13 +1,12 @@
-import React from 'react'
 import Card from '../ui/card'
 import { Timeline, TimelineItem } from '../ui/timeline'
 
-export default function ExperienceCard() {
+export default function CertificationCard() {
     return (
-        <Card title='My Experience'>
+        <Card title='My Certification'>
             <Timeline>
                 {
-                    experineceData.map((ex, i) => (
+                    certificationData.map((ex, i) => (
                         <TimelineItem
                             key={i}
                             date={ex.date}
@@ -23,12 +22,12 @@ export default function ExperienceCard() {
     )
 }
 
-const experineceData = [
+const certificationData = [
     {
-        date: "2024 - Now",
-        title: "Fresher",
-        subTitle: "Ready_to_work",
-        link: "",
-        tag: "Experience",
+        date: "2023",
+        title: "Html & CSS",
+        subTitle: "Tinder_Clone",
+        link: "https://www.cert.devtown.in/verify/1BWwpv",
+        tag: "Certification",
     },
 ]

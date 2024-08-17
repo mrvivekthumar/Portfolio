@@ -4,6 +4,9 @@ import React from 'react'
 import { Autoplay, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import "swiper/css"
+import "swiper/css/pagination"
+
 export default function Gallery() {
     return (
         <div className='h-[550px] sm:h-[650px] md:h-full 2xl:h-[750px] w-full'>
@@ -11,7 +14,7 @@ export default function Gallery() {
                 modules={[Pagination, Autoplay]}
                 pagination={{ clickable: true }}
                 autoplay={{ delay: 2500, disableOnInteraction: false }}
-                className='swiper rounded-2xl'
+                className='mySwiper rounded-2xl'
             >
                 {
                     galleryImages.map((img) => (
@@ -19,7 +22,7 @@ export default function Gallery() {
                             <Image
                                 src={img.img}
                                 alt='gallerey images of mine'
-                                className='object-cover w-full h-full object-left-top swiper-pagination'
+                                className='object-cover w-full h-full object-left-top'
                             />
                         </SwiperSlide>
                     ))

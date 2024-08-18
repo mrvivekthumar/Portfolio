@@ -21,7 +21,6 @@ export default function ToggleButton({ open, setOpen }: { open: boolean, setOpen
                     )}
 
                     />
-
                 </div>
             </div>
         </button>

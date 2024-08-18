@@ -16,9 +16,9 @@ export default function Home() {
         >
             {() =>
                 <div>
-                    {/* <LandingSection /> */}
-                    {/* <FeaturedSection /> */}
-                    {/* <AboutSection /> */}
+                    <LandingSection />
+                    <FeaturedSection />
+                    <AboutSection />
                     <ContactSection />
                 </div>
 

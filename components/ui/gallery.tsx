@@ -23,6 +23,8 @@ export default function Gallery() {
                                 src={img.img}
                                 alt='gallerey images of mine'
                                 className='object-cover w-full h-full object-left-top'
+                                width={img.width}
+                                height={img.height}
                             />
                         </SwiperSlide>
                     ))

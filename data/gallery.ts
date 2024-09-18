@@ -5,19 +5,19 @@ import IMG3 from "@/public/assets/images/gallery/IMG3.jpg"
 
 export const galleryImages = [
     {
-        id: 1,
+        id: 0,
         img: IMG,
     },
     {
-        id: 2,
+        id: 1,
         img: IMG1,
     },
     {
-        id: 3,
+        id: 2,
         img: IMG2,
     },
     {
-        id: 4,
+        id: 3,
         img: IMG3,
     },
 ]

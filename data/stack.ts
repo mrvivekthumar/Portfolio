@@ -1,6 +1,6 @@
 import Android from "@/public/assets/stack/Android.svg";
 import CPlus from "@/public/assets/stack/C++.svg";
-import Css from "@/public/assets/stack/CSS.svg";
+import Css from "@/public/assets/stack/Css.svg";
 import Docker from "@/public/assets/stack/Docker.svg";
 import Express from "@/public/assets/stack/Express.svg";
 import Firebase from "@/public/assets/stack/Firebase.svg";
@@ -22,8 +22,6 @@ import Spring from "@/public/assets/stack/Spring.svg";
 import SupaBase from "@/public/assets/stack/Supabase.svg";
 import TailWindCss from "@/public/assets/stack/Tailwind.svg";
 import TypeScript from "@/public/assets/stack/Typescript.svg";
-
-
 
 
 export const stackData = [

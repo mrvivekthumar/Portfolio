@@ -7,7 +7,7 @@ import FullScreenMenu from './full-screen-menu/full-screen-menu'
 import ToggleButton from './full-screen-menu/toggle-button'
 import { AnimatePresence } from 'framer-motion'
 
-export default function () {
+export default function Header() {
     const [open, setOpen] = useState<boolean>(false);
     const [showToggle, setShowToggle] = useState<boolean>(false);
 

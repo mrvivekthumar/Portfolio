@@ -8,7 +8,9 @@ import "swiper/css"
 import "swiper/css/pagination"
 
 export default function Gallery() {
+    console.log(` Gallery Image :  ${galleryImages} `)
     return (
+
         <div className='h-[550px] sm:h-[650px] md:h-full 2xl:h-[750px] w-full'>
             <Swiper
                 modules={[Pagination, Autoplay]}

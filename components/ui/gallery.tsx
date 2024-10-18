@@ -1,3 +1,4 @@
+'use client'
 import { galleryImages } from '@/data'
 import Image from 'next/image'
 import React from 'react'

@@ -42,21 +42,36 @@ export default function ExpandableFeatured() {
     }
 
     return (
-        <div className='w-full grid grid-cols-1 gap-4 lg:flex lg:justify-between lg:gap-x-4'>
-            {
-                featureData.slice(1).map((featured, i) => (
+        <div className='w-full'>
+            {/* Mobile Layout: Stack vertically */}
+            <div className='block md:hidden space-y-6'>
+                {featureData.slice(1).map((featured, i) => (
+                    <div
+                        key={i}
+                        className="w-full h-[350px] sm:h-[400px]"
+                        onTouchStart={() => handleInteraction(i)}
+                        onClick={() => handleInteraction(i)}
+                    >
+                        <FeaturedCard
+                            active={i === hoveredIndex}
+                            title={featured.title}
+                            tag={featured.tag}
+                            video={featured.video}
+                        />
+                    </div>
+                ))}
+            </div>
+
+            {/* Desktop Layout: Flex row with hover expansion */}
+            <div className='hidden md:flex justify-between gap-4'>
+                {featureData.slice(1).map((featured, i) => (
                     <div
                         key={i}
                         className={cn(
-                            "relative h-[400px] sm:h-[500px] lg:h-[640px] mb-8 lg:mb-16 transition-all origin-center duration-300 ease-in-out cursor-pointer",
-                            // Mobile: full width, Desktop: responsive width
-                            "w-full lg:w-1/3",
-                            // Only apply hover effects on desktop
-                            !isMobile && i === hoveredIndex ? "lg:w-[40%]" : "lg:w-[33%]"
+                            "relative h-[500px] lg:h-[640px] transition-all origin-center duration-300 ease-in-out cursor-pointer",
+                            // Desktop responsive width with hover expansion
+                            i === hoveredIndex ? "w-[45%]" : "w-[27.5%]"
                         )}
-                        // Touch events for mobile
-                        onTouchStart={() => handleInteraction(i)}
-                        // Mouse events for desktop
                         onMouseEnter={() => handleMouseEnter(i)}
                         onMouseLeave={handleMouseLeave}
                         onClick={() => handleInteraction(i)}
@@ -68,8 +83,8 @@ export default function ExpandableFeatured() {
                             video={featured.video}
                         />
                     </div>
-                ))
-            }
+                ))}
+            </div>
         </div>
     )
 }

@@ -76,8 +76,11 @@ export default function ContactSection() {
     const isLoading = formStatus.type === 'loading';
 
     return (
-        <section id="contact" className='pt-24 px-3 lg:px-8'>
-            <Heading number='03' title_1='Contact' title_2='Me' />
+        <section id="contact" className='pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-16 sm:pb-20 md:pb-24 lg:pb-28 px-3 sm:px-6 lg:px-8'>
+            {/* Heading with better spacing */}
+            <div className="mb-8 sm:mb-12 lg:mb-16">
+                <Heading number='03' title_1='Contact' title_2='Me' />
+            </div>
             <Card>
                 <div className='grid gap-8 grid-cols-1 lg:grid-cols-3'>
                     {/* Contact Cards */}

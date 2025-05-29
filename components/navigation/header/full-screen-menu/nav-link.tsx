@@ -31,14 +31,15 @@ const NavLink: FC<NavLinkProps> = ({ data, onClick }) => {
             onMouseLeave={() => setHover(false)}
             onClick={handleClick}
         >
-            {/* For bullets */}
+            {/* Bullet indicator */}
             <motion.div
                 variants={scale}
                 animate={hover ? "open" : "closed"}
-                className="w-2.5 h-2.5 bg-white rounded-full absolute -left-[30px]"
+                className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-white rounded-full absolute -left-4 sm:-left-6 lg:-left-8"
             ></motion.div>
 
-            <span className="text-[6vw] sm:text-[4vw] lg:text-[6vw] uppercase leading-[96%] font-bold text-primary-foreground hover:text-blue-400 transition-colors duration-200">
+            {/* Navigation text with proper responsive sizing */}
+            <span className="text-[12vw] sm:text-[8vw] md:text-[6vw] lg:text-[5vw] xl:text-[4vw] 2xl:text-[3.5vw] uppercase leading-[90%] font-bold text-primary-foreground hover:text-blue-400 transition-colors duration-200 select-none">
                 {title}
             </span>
         </motion.div>

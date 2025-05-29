@@ -99,10 +99,10 @@ export default function ContactSection() {
                                 <Button>Send <SiMinutemailer /> </Button>
                             </div>
                             {/* Hidden for questions */}
-                            <div className="hidden">
+                            {/* <div className="hidden">
                                 <input type='text' value={services.join(", ")} name='services' hidden />
                                 <input type='text' value={budgets.join(", ")} name='budget' hidden />
-                            </div>
+                            </div> */}
                             <button type='submit' ref={btnRef} hidden />
                         </div>
                     </form>

@@ -59,7 +59,7 @@ export default function MenuCard({ closeMenu }: MenuCardProps) {
                         onClick={() => handleMenuClick('#contact')}
                         className="w-full bg-white text-[#1e36ea] font-bold py-3 px-6 rounded-lg hover:bg-white/90 transition-all duration-200 hover:scale-105 shadow-lg"
                     >
-                        Let's Connect 🚀
+                        Let&apos;s Connect 🚀
                     </button>
                 </div>
             </div>

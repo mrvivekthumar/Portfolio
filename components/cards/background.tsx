@@ -6,7 +6,7 @@ export default function BackgroundCard() {
         <Card className='md:h-full' title='My Background'>
             <div>
                 <p className='leading-[160%] font-normal text-white/[0.4] text-[16px]'>
-                    I'm Vivek Thumar, Born and raised in Junagadh, Gujarat.<br></br>
+                    I&apos;m Vivek Thumar, Born and raised in Junagadh, Gujarat.<br></br>
                     <span className='text-white underline'> I discovered my passion for technology during my academic journey.</span>
                     <br />
                     <br />

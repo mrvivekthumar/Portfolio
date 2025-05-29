@@ -1,5 +1,5 @@
 "use client";
-import { FC, ReactNode, useRef, useState } from "react";
+import { FC, ReactNode, useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 interface CustomWaterWaveWrapperProps {
@@ -7,13 +7,41 @@ interface CustomWaterWaveWrapperProps {
     className?: string;
 }
 
+// Create consistent particle data that won't change between server and client
+const generateStaticParticles = () => {
+    // Use fixed seed values instead of Math.random() for consistency
+    const particles = [];
+    const seedValues = [0.1, 0.3, 0.7, 0.2, 0.9, 0.5, 0.8, 0.4]; // Fixed "random" values
+
+    for (let i = 0; i < 8; i++) {
+        particles.push({
+            id: i,
+            width: seedValues[i] * 6 + 2, // 2-8px
+            height: seedValues[(i + 1) % 8] * 6 + 2,
+            left: seedValues[(i + 2) % 8] * 100, // 0-100%
+            top: seedValues[(i + 3) % 8] * 100,
+            animationDelay: seedValues[(i + 4) % 8] * 3, // 0-3s delay
+            animationDuration: 4 + seedValues[(i + 5) % 8] * 3, // 4-7s duration
+            xMovement: seedValues[(i + 6) % 8] * 20 - 10, // -10 to 10
+        });
+    }
+
+    return particles;
+};
+
 const CustomWaterWaveWrapper: FC<CustomWaterWaveWrapperProps> = ({
     children,
     className = ""
 }) => {
     const [ripples, setRipples] = useState<Array<{ id: number; x: number; y: number }>>([]);
+    const [isMounted, setIsMounted] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
     const rippleCounter = useRef(0);
+
+    // Wait for component to mount before rendering dynamic content
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     const createRipple = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!containerRef.current) return;
@@ -35,6 +63,9 @@ const CustomWaterWaveWrapper: FC<CustomWaterWaveWrapperProps> = ({
             setRipples(prev => prev.filter(ripple => ripple.id !== newRipple.id));
         }, 1200);
     };
+
+    // Generate static particles that won't cause hydration mismatch
+    const staticParticles = generateStaticParticles();
 
     return (
         <div
@@ -74,8 +105,8 @@ const CustomWaterWaveWrapper: FC<CustomWaterWaveWrapperProps> = ({
                 }}
             />
 
-            {/* Click ripple effects */}
-            {ripples.map((ripple) => (
+            {/* Click ripple effects - Only render after mount */}
+            {isMounted && ripples.map((ripple) => (
                 <motion.div
                     key={ripple.id}
                     className="absolute pointer-events-none"
@@ -131,33 +162,35 @@ const CustomWaterWaveWrapper: FC<CustomWaterWaveWrapperProps> = ({
                 </motion.div>
             ))}
 
-            {/* Floating particles */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                {[...Array(8)].map((_, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20"
-                        style={{
-                            width: Math.random() * 6 + 2,
-                            height: Math.random() * 6 + 2,
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                        }}
-                        animate={{
-                            y: [0, -30, 0],
-                            x: [0, Math.random() * 20 - 10, 0],
-                            opacity: [0.2, 0.6, 0.2],
-                            scale: [1, 1.2, 1],
-                        }}
-                        transition={{
-                            duration: 4 + Math.random() * 3,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: Math.random() * 3,
-                        }}
-                    />
-                ))}
-            </div>
+            {/* Floating particles - Only render after mount to avoid hydration mismatch */}
+            {isMounted && (
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    {staticParticles.map((particle) => (
+                        <motion.div
+                            key={particle.id}
+                            className="absolute rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20"
+                            style={{
+                                width: particle.width,
+                                height: particle.height,
+                                left: `${particle.left}%`,
+                                top: `${particle.top}%`,
+                            }}
+                            animate={{
+                                y: [0, -30, 0],
+                                x: [0, particle.xMovement, 0],
+                                opacity: [0.2, 0.6, 0.2],
+                                scale: [1, 1.2, 1],
+                            }}
+                            transition={{
+                                duration: particle.animationDuration,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                                delay: particle.animationDelay,
+                            }}
+                        />
+                    ))}
+                </div>
+            )}
 
             {/* Subtle grid overlay */}
             <div

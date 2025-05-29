@@ -775,3 +775,224 @@ input, textarea, select {
     color: black;
   }
 }
+
+
+
+/* Additional mobile-responsive styles for featured section */
+/* Add this to your globals.css or component styles */
+
+/* Featured Section Mobile Optimizations */
+@layer components {
+  /* Mobile featured cards */
+  .featured-card-mobile {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
+  /* Video container optimizations */
+  .video-container-mobile {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Mobile video optimizations */
+  .video-mobile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Touch-friendly buttons */
+  .touch-button {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+  }
+
+  /* Smooth animations for mobile */
+  .mobile-smooth-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+  }
+
+  /* Mobile card hover states */
+  .mobile-card-active {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Featured section grid improvements */
+  .featured-grid-mobile {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  .featured-grid-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Responsive video aspect ratio */
+  .video-aspect-mobile {
+    aspect-ratio: 16/9;
+    min-height: 180px;
+  }
+
+  .video-aspect-tablet {
+    aspect-ratio: 16/10;
+    min-height: 220px;
+  }
+
+  .video-aspect-desktop {
+    aspect-ratio: 16/9;
+    min-height: 300px;
+  }
+}
+
+/* Responsive breakpoints for featured section */
+@media (max-width: 640px) {
+  /* Extra small mobile devices */
+  .featured-section-mobile {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .featured-card-height-xs {
+    height: 200px;
+    min-height: 200px;
+  }
+
+  .featured-card-height-xs.active {
+    height: 280px;
+    min-height: 280px;
+  }
+
+  /* Text scaling for small screens */
+  .featured-title-xs {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .featured-tag-xs {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  /* Small tablets */
+  .featured-card-height-sm {
+    height: 250px;
+    min-height: 250px;
+  }
+
+  .featured-card-height-sm.active {
+    height: 320px;
+    min-height: 320px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Tablets */
+  .featured-grid-tablet-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .featured-card-height-md {
+    height: 300px;
+    min-height: 300px;
+  }
+
+  .featured-card-height-md.active {
+    height: 350px;
+    min-height: 350px;
+  }
+}
+
+@media (min-width: 1025px) {
+  /* Desktop */
+  .featured-grid-desktop {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .featured-card-desktop {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .featured-card-desktop:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Performance optimizations */
+@media (max-width: 768px) {
+  /* Reduce motion on mobile for better performance */
+  .reduce-motion-mobile {
+    transition-duration: 0.2s;
+  }
+
+  /* Hardware acceleration for smoother animations */
+  .gpu-accelerated {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* Optimize for touch */
+  .touch-optimized {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* Loading states for better UX */
+.loading-skeleton {
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.1) 25%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .featured-card-mobile,
+  .mobile-smooth-transition,
+  .featured-card-desktop {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .featured-card-border {
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+}

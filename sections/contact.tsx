@@ -10,12 +10,12 @@ import { FaPhoneVolume, FaProjectDiagram, FaUser } from 'react-icons/fa'
 import { MdEmail, MdSubject } from 'react-icons/md'
 import { SiMinutemailer } from 'react-icons/si'
 import emailjs from "@emailjs/browser"
+import FancyButton from '@/components/ui/fancy-button'
 
 export default function ContactSection() {
 
     const formRef = useRef<HTMLFormElement>(null!);
     const btnRef = useRef<HTMLButtonElement>(null);
-
 
 
     const [services, setServices] = useState<string[]>([]);
@@ -30,7 +30,7 @@ export default function ContactSection() {
     }
 
     return (
-        <div className='pt-24 px-3 lg:px-8'>
+        <section id="contact" className='pt-24 px-3 lg:px-8'>
             <Heading number='03' title_1='Contact' title_2='Me' />
             <Card>
                 <div className='grid gap-8 grid-cols-1 lg:grid-cols-3'>
@@ -44,7 +44,7 @@ export default function ContactSection() {
 
                         />
                         <ContactCard
-                            title="Chat with us"
+                            title="Connect with me"
                             icon={<MdEmail className='fill-[#333] text-lg ' />}
                             text="mrvivekthumar@gmail.com"
                             btnText="Email us"
@@ -94,21 +94,19 @@ export default function ContactSection() {
                             icon={<FaProjectDiagram />}
                         />
 
-                        <div className='!w-full !flex !justify-end '>
-                            <div onClick={() => btnRef.current?.click()}>
-                                <Button>Send <SiMinutemailer /> </Button>
-                            </div>
-                            {/* Hidden for questions */}
-                            {/* <div className="hidden">
-                                <input type='text' value={services.join(", ")} name='services' hidden />
-                                <input type='text' value={budgets.join(", ")} name='budget' hidden />
-                            </div> */}
+                        <div className='!w-full !flex !justify-end'>
+                            <FancyButton
+                                text="Send Message"
+                                icon={<SiMinutemailer />}
+                                size="md"
+                                onClick={() => btnRef.current?.click()}
+                            />
                             <button type='submit' ref={btnRef} hidden />
                         </div>
                     </form>
                 </div>
             </Card>
-        </div>
+        </section>
     )
 }
 

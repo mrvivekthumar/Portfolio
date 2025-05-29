@@ -33,13 +33,13 @@ const educationData = [
     },
     {
         date: "2020 - 2022",
-        title: "11th & 12th",
+        title: "11th & 12th (95.83 PR)",
         subTitle: "Bliss_science_academy",
         tag: "Education",
     },
     {
         date: "2019 - 2020",
-        title: "10th",
+        title: "10th (99.07 PR)",
         subTitle: "Nobel_high_school",
         tag: "Education",
     },

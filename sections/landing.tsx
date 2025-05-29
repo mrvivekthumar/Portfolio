@@ -3,53 +3,132 @@ import FancyButton from '@/components/ui/fancy-button'
 import LiveClock from '@/components/ui/live-clock'
 import ScrollDown from '@/components/ui/scroll-down'
 import MagneticWrapper from '@/components/visualEffects/magnetic-wrapper'
+import { handleNavClick } from '@/utils/navigation'
 import React from 'react'
 import { FaArrowRight } from 'react-icons/fa'
 
 export default function LandingSection() {
     return (
-        <div className='relative h-screen overflow-hidden p-8'>
-            {/* Header */}
-            <Header />
+        <section id="home" className='relative h-screen overflow-hidden p-8'>
+            {/* Background gradient for better visual appeal */}
+            <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-50 z-0" />
 
-            {/* Show magnetic fancy button on small screens and hide it on md screen */}
-            <div className='absolute bottom-36 left-10 z-20 md:hidden'>
-                <MagneticWrapper>
-                    <FancyButton text="Let's talk" icon={<FaArrowRight />} />
-                </MagneticWrapper>
+            {/* Main content container with proper padding */}
+            <div className="relative z-10 min-h-screen flex flex-col p-4 sm:p-6 lg:p-8">
+                {/* Header */}
+                <Header />
 
-            </div>
+                {/* Main content area - using flexbox for better control */}
+                <div className="flex-1 flex flex-col justify-center items-center relative">
 
-            {/* Live Clock */}
-            <div className='absolute right-10 bottom-10'>
-                <LiveClock timeZone='Asia/India' />
-            </div>
+                    {/* Hero Content */}
+                    <div className="text-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        {/* Main Headline */}
+                        <div className="space-y-2 sm:space-y-4 lg:space-y-6">
+                            <h1 className="font-bold text-primary-foreground leading-none tracking-tight">
+                                {/* Mobile: 12vw, Tablet: 10vw, Desktop: fixed sizes */}
+                                <div className="text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[7rem] xl:text-[8rem] 2xl:text-[9rem]">
+                                    <div className="block">BUILDING</div>
+                                    <div className="block">TOMORROW'S</div>
+                                    <div className="block relative">
+                                        <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                                            SOLUTIONS
+                                        </span>
+                                    </div>
+                                </div>
+                            </h1>
 
-            {/* Slogan */}
-            <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-8 leading-[14vw] lg:leading-[10vw] 2xl:leading-[9rem]  font-medium h-[40rem] tracking-[-0.3rem]'>
-                <div className="flex flex-col justify-center items-center text-primary-foreground text-[18vw] lg:text-[14vw] 2xl:text-[12rem] uppercase ">
-                    <div><span>Code</span></div>
-                    <div><span>Crafting</span></div>
-                    <div className='relative'>
-                        <span>Brillance</span>
-                        <div className='text-[1rem] leading-[1.4rem] tracking-[-0.07rem] absolute top-[14vw] lg:top-[10vw]  2xl:top-[9rem] left-0 2xl:left-[57rem] w-[30rem] uppercase font-normal '>
-                            <span>Empowering innovation</span>
-                            <br />
-                            <span>through inspired design</span>
-                            <br />
-                            <span>where challenges spark creativity</span>
-                            <br />
-                            <span>and solution redefine possibilites.</span>
+                            {/* Subtitle */}
+                            <div className="mt-6 sm:mt-8 lg:mt-12 max-w-4xl mx-auto">
+                                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-secondary-foreground leading-relaxed font-normal px-4">
+                                    Full-Stack Developer & Information Technology Student at DDIT Nadiad
+                                    <br className="hidden sm:block" />
+                                    <span className="block mt-2 sm:mt-1">
+                                        Crafting innovative web solutions with modern technologies
+                                    </span>
+                                </p>
+                            </div>
+
+                            {/* Call to Action - Mobile visible button */}
+                            <div className="mt-8 sm:mt-12 lg:hidden">
+                                <MagneticWrapper>
+                                    <FancyButton
+                                        text="Let's Connect"
+                                        icon={<FaArrowRight />}
+                                        size="lg"
+                                        fullWidth={true}
+                                        onClick={() => handleNavClick('#contact')}
+                                    />
+                                </MagneticWrapper>
+                            </div>
                         </div>
                     </div>
 
+                    {/* Scroll Down Indicator */}
+                    <div className="absolute bottom-8 sm:bottom-12 lg:bottom-16 left-1/2 transform -translate-x-1/2">
+                        <MagneticWrapper>
+                            <ScrollDown />
+                        </MagneticWrapper>
+                    </div>
                 </div>
 
-                {/* Magnetic Scroll down */}
-                <MagneticWrapper className='absolute left-1/2 -translate-x-1/2 bottom-[8rem] md:bottom-[4rem] 2xl:bottom-10 '>
-                    <ScrollDown />
-                </MagneticWrapper>
+                {/* Bottom positioned elements */}
+                <div className="relative">
+                    {/* Desktop Call to Action Button - Hidden on mobile, shown in header on desktop */}
+                    <div className="hidden lg:block absolute bottom-8 left-8 z-20">
+                        <MagneticWrapper>
+                            <FancyButton
+                                text="Let's Collaborate"
+                                icon={<FaArrowRight />}
+                                size="xl"
+                                onClick={() => handleNavClick('#contact')}
+                            />
+                        </MagneticWrapper>
+                    </div>
+
+                    {/* Live Clock - Responsive positioning */}
+                    <div className="absolute bottom-4 sm:bottom-6 lg:bottom-8 right-4 sm:right-6 lg:right-8">
+                        <div className="text-right">
+                            <LiveClock timeZone='Asia/Kolkata' />
+                            <p className="text-xs sm:text-sm text-secondary-foreground mt-1 font-pixel">
+                                LOCAL TIME
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            {/* Professional Stats/Badges - Mobile optimized */}
+            <div className="absolute top-1/2 left-4 sm:left-8 transform -translate-y-1/2 z-20 hidden md:block">
+                <div className="space-y-4">
+                    <div className="bg-primary-background border border-border rounded-lg p-3 backdrop-blur-sm">
+                        <div className="text-2xl font-bold text-primary-foreground">3+</div>
+                        <div className="text-xs text-secondary-foreground">Years Learning</div>
+                    </div>
+                    <div className="bg-primary-background border border-border rounded-lg p-3 backdrop-blur-sm">
+                        <div className="text-2xl font-bold text-primary-foreground">10+</div>
+                        <div className="text-xs text-secondary-foreground">Projects Built</div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Skills Showcase - Right side, hidden on mobile */}
+            <div className="absolute top-1/2 right-4 sm:right-8 transform -translate-y-1/2 z-20 hidden lg:block">
+                <div className="space-y-3">
+                    {['React', 'Next.js', 'Node.js', 'TypeScript', 'Tailwind', 'SpringBoot'].map((skill, index) => (
+                        <div
+                            key={skill}
+                            className="bg-primary-background border border-border rounded-full px-4 py-2 backdrop-blur-sm transition-all duration-300 hover:scale-105"
+                            style={{
+                                animationDelay: `${index * 0.2}s`,
+                                animation: 'fadeInRight 0.6s ease-out forwards'
+                            }}
+                        >
+                            <span className="text-sm font-medium text-primary-foreground">{skill}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
     )
 }

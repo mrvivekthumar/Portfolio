@@ -1,23 +1,2 @@
 in Contact us page == 
 Multiple select wrapper
-
-<div className='flex flex-col gap-6 '>
-    <div className='space-y-6'>
-        <h1 className='font-bold text-lg '>What is your budget ?</h1>
-        <div className='flex flex-wrap items-center justify-between mb-4 gap-8 '>
-            {/* Budget Option */}
-            {
-                budgetsOptions.map((budget) => (
-                    <SelectInput
-                        key={budget.id}
-                        type="checkbox"
-                        id={budget.id}
-                        text={budget.text}
-                        selectedOptions={budgets}
-                        setSelectedOptions={setBudgets}
-                    />
-                ))
-            }
-        </div>
-    </div>
-</div>

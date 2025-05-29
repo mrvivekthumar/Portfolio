@@ -9,7 +9,7 @@ const MainFeatured = featureData[0];
 
 export default function FeaturedSection() {
     return (
-        <div className='pt-24 px-3 lg:px-8'>
+        <section id="featured" className='pt-24 px-3 lg:px-8'>
             {/* Heading */}
             <Heading number='01' title_1='Featured' title_2='Work' />
             {/* Main featured Card */}
@@ -21,6 +21,6 @@ export default function FeaturedSection() {
             />
             {/* Now 3 different cards expandable */}
             <ExpandableFeatured />
-        </div>
+        </section>
     )
 }

@@ -7,7 +7,7 @@ export default function ExperienceCard() {
         <Card title='My Experience'>
             <Timeline>
                 {
-                    experineceData.map((ex, i) => (
+                    experienceData.map((ex, i) => (
                         <TimelineItem
                             key={i}
                             date={ex.date}
@@ -23,12 +23,19 @@ export default function ExperienceCard() {
     )
 }
 
-const experineceData = [
+const experienceData = [
     {
-        date: "2024 - Now",
-        title: "Fresher",
-        subTitle: "Ready_to_work",
-        link: "",
+        date: "2025 - Present",
+        title: "Full-Stack Developer",
+        subTitle: "Personal_Projects & Open_Source",
+        link: "https://github.com/mrvivekthumar",
         tag: "Experience",
+    },
+    {
+        date: "2022 - Present",
+        title: "Computer Science Student",
+        subTitle: "DDIT_Nadiad - Information Technology",
+        link: "",
+        tag: "Education",
     },
 ]

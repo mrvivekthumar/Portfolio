@@ -6,13 +6,14 @@ export default function BackgroundCard() {
         <Card className='md:h-full' title='My Background'>
             <div>
                 <p className='leading-[160%] font-normal text-white/[0.4] text-[16px]'>
-                    <span className='text-white underline'>My name is Vivek Thumar, and I was born in the small village of Makhiyala near Junagadh in Gujarat.</span>
+                    I'm Vivek Thumar, Born and raised in Junagadh, Gujarat.<br></br>
+                    <span className='text-white underline'> I discovered my passion for technology during my academic journey.</span>
                     <br />
-                    From a young age, I&apos;ve been known for my smiling face, something I consider a special gift. I love meeting different people and learning from their lives—it&apos;s a hobby that keeps me inspired.
+                    <br />
+                    <span className='text-white underline'> I love meeting different Tech people and learning from their Experiences.</span>
                     <br /><br />
-                    <span className='text-white underline'>In 10th standard, I realized the importance of taking my career seriously,</span> which led me to achieve a 99.07 percentile, followed by a 95 percentile in 12th standard, and a rank of 1867 across Gujarat.
-                    <br /><br />
-                    <span className='text-white underline'>Choosing Information Technology for my B.Tech at Dharmsinh Desai University was the right decision for me.</span> The dynamic nature of IT, where each challenge requires a new approach, excites me. Now in my third year, I&apos;m thrilled to be part of this ever-evolving field and eager to connect with others who share my passion.
+                    The rapidly evolving nature of technology excites me most about this field.<br></br><br></br>
+                    <span className='text-white underline'> Every project is an opportunity to learn new frameworks, implement better architectures, and solve complex problems with elegant solutions..</span>
                 </p>
             </div>
         </Card>

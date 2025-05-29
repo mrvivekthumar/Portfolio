@@ -45,13 +45,12 @@ export default function SvgCurve() {
         const newProgress = progressRef.current * Math.sin(timeRef.current);
         setPath(newProgress);
 
-        progressRef.current = lerp(progressRef.current, 0, 0.06); // Slightly faster lerp
-        timeRef.current += 0.15; // Slightly slower time increment
+        progressRef.current = lerp(progressRef.current, 0, 0.06);
+        timeRef.current += 0.15;
 
-        if (Math.abs(progressRef.current) > 0.3) { // Lower threshold for better performance
+        if (Math.abs(progressRef.current) > 0.3) {
             reqIdRef.current = requestAnimationFrame(animateOut);
         } else {
-            // Reset values when animation is complete
             timeRef.current = Math.PI / 2;
             progressRef.current = 0;
             setPath(0);
@@ -59,11 +58,11 @@ export default function SvgCurve() {
         }
     }, [setPath, lerp]);
 
-    // Improved mouse move handler with throttling
-    const manageMouseMove = useCallback((e: React.MouseEvent) => {
+    // Fixed: Use React.MouseEvent for proper typing
+    const manageMouseMove = useCallback((e: React.MouseEvent<HTMLSpanElement>) => {
         if (!containerRef.current) return;
 
-        const { movementY } = e;
+        const { movementY } = e.nativeEvent; // Access native event for movementY
         const box = containerRef.current.getBoundingClientRect();
 
         // Bounds checking to prevent extreme values
@@ -97,7 +96,7 @@ export default function SvgCurve() {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
                 setPath(progressRef.current);
-            }, 100); // Debounce resize events
+            }, 100);
         };
 
         // Initial path setup
@@ -114,8 +113,8 @@ export default function SvgCurve() {
         };
     }, [setPath]);
 
-    // Touch support for mobile devices
-    const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    // Fixed: Use React.TouchEvent for proper typing
+    const handleTouchMove = useCallback((e: React.TouchEvent<HTMLSpanElement>) => {
         if (!containerRef.current) return;
 
         const touch = e.touches[0];
@@ -127,13 +126,22 @@ export default function SvgCurve() {
         progressRef.current = Math.max(-50, Math.min(50, progressRef.current + (Math.random() - 0.5) * 10));
     }, []);
 
+    // Fixed: Use React.KeyboardEvent for proper typing
+    const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLSpanElement>) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleMouseEnter();
+            setTimeout(handleMouseLeave, 1000);
+        }
+    }, [handleMouseEnter, handleMouseLeave]);
+
     return (
         <div className="line relative w-full" ref={containerRef}>
             <span
                 className={`
                     box relative block w-full h-10 cursor-pointer transition-opacity duration-300
                     ${isActive ? 'opacity-100' : 'opacity-60'}
-                    hover:opacity-100
+                    hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-black
                 `}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
@@ -144,12 +152,7 @@ export default function SvgCurve() {
                 role="button"
                 tabIndex={0}
                 aria-label="Interactive curve animation"
-                onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        handleMouseEnter();
-                        setTimeout(handleMouseLeave, 1000);
-                    }
-                }}
+                onKeyDown={handleKeyDown}
             />
             <svg
                 className="absolute top-0 left-0 w-full h-[100px] pointer-events-none"

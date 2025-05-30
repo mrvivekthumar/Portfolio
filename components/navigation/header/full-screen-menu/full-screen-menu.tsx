@@ -4,7 +4,6 @@ import Curve from "./curve";
 import Profile from "@/components/ui/profile";
 import NavLink from "./nav-link";
 import MenuCard from "./menu-card";
-import { handleNavClick } from "@/utils/navigation";
 import { useEffect } from "react";
 
 interface FullScreenMenuProps {
@@ -12,8 +11,65 @@ interface FullScreenMenuProps {
 }
 
 export default function FullScreenMenu({ closeMenu }: FullScreenMenuProps) {
-    const handleMenuItemClick = (href: string) => {
-        handleNavClick(href, closeMenu);
+
+    // Enhanced navigation function
+    const handleNavigation = (href: string) => {
+        console.log('Navigating to:', href); // Debug log
+
+        // Close menu first
+        closeMenu();
+
+        // Wait for menu close animation, then scroll
+        setTimeout(() => {
+            if (href === "/" || href === "#home") {
+                // Scroll to top for home
+                console.log('Scrolling to top');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // Fallback for browsers that don't support smooth behavior
+                if (window.scrollY > 0) {
+                    window.scrollTo(0, 0);
+                }
+            } else if (href.startsWith('#')) {
+                // Find and scroll to section
+                const elementId = href.replace('#', '');
+                const element = document.getElementById(elementId);
+
+                console.log('Found element:', element); // Debug log
+
+                if (element) {
+                    // Multiple scroll methods for better compatibility
+                    try {
+                        // Method 1: scrollIntoView (most reliable)
+                        element.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start',
+                            inline: 'nearest'
+                        });
+
+                        console.log('Scrolled using scrollIntoView');
+                    } catch (error) {
+                        // Method 2: Manual calculation fallback
+                        console.log('Fallback to manual scroll');
+                        const headerOffset = 80;
+                        const elementPosition = element.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        // Method 3: Instant scroll if smooth doesn't work
+                        setTimeout(() => {
+                            window.scrollTo(0, offsetPosition);
+                        }, 100);
+                    }
+                } else {
+                    console.log('Element not found:', elementId); // Debug log
+                }
+            }
+        }, 400); // Wait for menu close animation
     };
 
     const handleBackdropClick = (e: React.MouseEvent) => {
@@ -109,7 +165,7 @@ export default function FullScreenMenu({ closeMenu }: FullScreenMenuProps) {
                                         <NavLink
                                             key={index}
                                             data={{ ...item, index }}
-                                            onClick={() => handleMenuItemClick(item.href)}
+                                            onClick={() => handleNavigation(item.href)}
                                         />
                                     ))}
                                 </div>
@@ -178,7 +234,7 @@ export default function FullScreenMenu({ closeMenu }: FullScreenMenuProps) {
 const navItems = [
     {
         title: "Home",
-        href: "/",
+        href: "#home",
     },
     {
         title: "Featured",

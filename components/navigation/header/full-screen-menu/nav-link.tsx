@@ -15,7 +15,10 @@ const NavLink: FC<NavLinkProps> = ({ data, onClick }) => {
     const { title, href, index } = data;
     const [hover, setHover] = useState<boolean>(false);
 
-    const handleClick = () => {
+    const handleClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('NavLink clicked:', title, href); // Debug log
         onClick();
     };
 

@@ -1,4 +1,4 @@
-// components/cards/resume.tsx - Production Grade Resume Card
+// components/cards/resume.tsx - Production Ready Resume Download
 import React, { useState, useCallback } from 'react'
 import Card from '../ui/card'
 import Image from 'next/image'
@@ -21,12 +21,17 @@ export default function ResumeCard() {
         setDownloadState({ status: 'downloading', message: 'Preparing download...' });
 
         try {
+            // 👈 PRODUCTION FIX: Dynamic URL construction
+            const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
+            const resumeUrl = `${baseUrl}/assets/resume/Vivek_Thumar_Resume.pdf`;
+
             // Track download analytics
             const analyticsData = {
                 timestamp: new Date().toISOString(),
                 userAgent: navigator.userAgent,
                 referrer: document.referrer || 'direct',
-                downloadType: 'resume_pdf'
+                downloadType: 'resume_pdf',
+                environment: process.env.NODE_ENV || 'development'
             };
 
             // Log download attempt (optional analytics)
@@ -38,14 +43,14 @@ export default function ResumeCard() {
                     (window as any).gtag('event', 'file_download', {
                         file_name: 'Vivek_Thumar_Resume.pdf',
                         file_extension: 'pdf',
-                        link_url: '/assets/resume/Vivek_Thumar_Resume.pdf'
+                        link_url: resumeUrl
                     });
                 }
             }
 
             // Create download link with proper attributes
             const link = document.createElement('a');
-            link.href = '/assets/resume/Vivek_Thumar_Resume.pdf';
+            link.href = resumeUrl; // 👈 PRODUCTION FIX: Use dynamic URL
             link.download = 'Vivek_Thumar_Resume.pdf';
             link.target = '_blank'; // Fallback for mobile browsers
             link.rel = 'noopener noreferrer';
@@ -197,7 +202,10 @@ export default function ResumeCard() {
                                     year: 'numeric'
                                 })}</span>
                             </div>
-
+                            <div className="flex items-center justify-center md:justify-start gap-1 text-green-400">
+                                <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                                <span>Production Ready • Always Current</span>
+                            </div>
                         </div>
                     </div>
                 </div>

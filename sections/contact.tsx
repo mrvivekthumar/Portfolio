@@ -1,4 +1,3 @@
-// sections/contact.tsx - Fixed Hydration Issue
 import ContactCard from '@/components/cards/contact'
 import Heading from '@/components/heading/heading'
 import FancyButton from '@/components/ui/fancy-button'
@@ -105,7 +104,7 @@ export default function ContactSection() {
                             <div className="space-y-2 text-sm text-secondary-foreground">
                                 <div>📧 Email: Within 24 hours</div>
                                 <div>🚀 Projects: 2-3 business days</div>
-                                <div>💼 Collaborations: Same day</div>
+                                <div>💼 Collaborations: 2-5 business days</div>
                             </div>
                         </div>
 
@@ -116,7 +115,7 @@ export default function ContactSection() {
                                 <span className="text-sm font-medium text-green-400">Secure Contact Form</span>
                             </div>
                             <div className="text-xs text-secondary-foreground">
-                                Your information is encrypted and never shared with third parties.
+                                Your information is never shared with third parties.
                             </div>
                         </div>
                     </div>
@@ -313,7 +312,6 @@ export default function ContactSection() {
     )
 }
 
-// Enhanced service options with better categorization
 const serviceOptions = [
     {
         id: "Frontend Development",
@@ -336,15 +334,7 @@ const serviceOptions = [
         text: "Code Review & Optimization"
     },
     {
-        id: "Technical Consultation",
-        text: "Technical Consultation"
-    },
-    {
         id: "Project Collaboration",
         text: "Project Collaboration"
-    },
-    {
-        id: "Mentorship & Learning",
-        text: "Mentorship & Learning"
-    },
+    }
 ]

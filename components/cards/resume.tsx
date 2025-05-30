@@ -1,4 +1,4 @@
-// components/cards/resume.tsx - Production Ready Resume Download
+// components/cards/resume.tsx - Final Production Version
 import React, { useState, useCallback } from 'react'
 import Card from '../ui/card'
 import Image from 'next/image'
@@ -21,41 +21,37 @@ export default function ResumeCard() {
         setDownloadState({ status: 'downloading', message: 'Preparing download...' });
 
         try {
-            // 👈 PRODUCTION FIX: Dynamic URL construction
-            const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
-            const resumeUrl = `${baseUrl}/assets/resume/Vivek_Thumar_Resume.pdf`;
+            // 👈 PRODUCTION READY: Works in both development and production
+            const resumePath = '/assets/resume/Vivek_Thumar_Resume.pdf';
 
             // Track download analytics
-            const analyticsData = {
+            console.log('[RESUME_DOWNLOAD]', {
                 timestamp: new Date().toISOString(),
-                userAgent: navigator.userAgent,
-                referrer: document.referrer || 'direct',
-                downloadType: 'resume_pdf',
-                environment: process.env.NODE_ENV || 'development'
-            };
+                path: resumePath,
+                environment: process.env.NODE_ENV,
+                siteUrl: process.env.NEXT_PUBLIC_SITE_URL,
+                userAgent: navigator.userAgent.substring(0, 100),
+                referrer: document.referrer || 'direct'
+            });
 
-            // Log download attempt (optional analytics)
-            if (typeof window !== 'undefined') {
-                console.log('[RESUME_DOWNLOAD]', analyticsData);
-
-                // Google Analytics 4 event (if available)
-                if ((window as any).gtag) {
-                    (window as any).gtag('event', 'file_download', {
-                        file_name: 'Vivek_Thumar_Resume.pdf',
-                        file_extension: 'pdf',
-                        link_url: resumeUrl
-                    });
-                }
+            // Google Analytics tracking (if available)
+            if (typeof window !== 'undefined' && (window as any).gtag) {
+                (window as any).gtag('event', 'file_download', {
+                    file_name: 'Vivek_Thumar_Resume.pdf',
+                    file_extension: 'pdf',
+                    event_category: 'engagement',
+                    event_label: 'resume_download'
+                });
             }
 
-            // Create download link with proper attributes
+            // Create download link
             const link = document.createElement('a');
-            link.href = resumeUrl; // 👈 PRODUCTION FIX: Use dynamic URL
+            link.href = resumePath;
             link.download = 'Vivek_Thumar_Resume.pdf';
-            link.target = '_blank'; // Fallback for mobile browsers
+            link.target = '_blank'; // Fallback: open in new tab if download fails
             link.rel = 'noopener noreferrer';
 
-            // For better browser compatibility
+            // Add to DOM temporarily
             link.style.display = 'none';
             document.body.appendChild(link);
 
@@ -64,7 +60,9 @@ export default function ResumeCard() {
 
             // Cleanup
             setTimeout(() => {
-                document.body.removeChild(link);
+                if (document.body.contains(link)) {
+                    document.body.removeChild(link);
+                }
             }, 100);
 
             // Success state
@@ -83,13 +81,13 @@ export default function ResumeCard() {
 
             setDownloadState({
                 status: 'error',
-                message: 'Download failed. Please try again.'
+                message: 'Download failed. Please try again or contact me directly.'
             });
 
-            // Reset to idle after 4 seconds
+            // Reset to idle after 5 seconds
             setTimeout(() => {
                 setDownloadState({ status: 'idle' });
-            }, 4000);
+            }, 5000);
         }
     }, [downloadState.status]);
 

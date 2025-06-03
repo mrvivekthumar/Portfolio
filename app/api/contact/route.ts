@@ -18,7 +18,7 @@ const recentSubmissions = new Map<string, number>();
 
 export async function POST(request: NextRequest) {
   const startTime = Date.now();
-  const clientIP = request.ip || request.headers.get('x-forwarded-for') || 'unknown';
+  const clientIP = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
 
   try {
     // Parse and validate request body first

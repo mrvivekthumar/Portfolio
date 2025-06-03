@@ -24,9 +24,15 @@ const PixelFont = localFont({
 
 // Metadata
 export const metadata: Metadata = {
-    title: "VIVEK THUMAR",
-    description: "This is Vivek Thumar official Portfolio",
-};
+    title: "Vivek Thumar - Full Stack Developer",
+    description: "IT Student & Full-Stack Developer specializing in React, Next.js, and modern web technologies",
+    keywords: "Full Stack Developer, React, Next.js, IT Student, Web Development",
+    openGraph: {
+        title: "Vivek Thumar - Full Stack Developer",
+        description: "Building innovative web solutions with modern technologies",
+        images: [{ url: "/assets/images/me/IMG.jpg" }]
+    }
+}
 
 export default function RootLayout({
     children,
